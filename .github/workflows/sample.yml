@@ -6,7 +6,7 @@ on:
         required: false
 jobs:
   jobA:
-    runs-on:ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - run: |
           echo "IP_adress present ${{ inputs.IP_address }}"
