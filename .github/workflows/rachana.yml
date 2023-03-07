@@ -1,9 +1,7 @@
 name: condition_check
 on:
    workflow_call:
-   push:
-      branches: 
-         - main
+   
 jobs:
   jobA:
     runs-on: ubuntu-latest
