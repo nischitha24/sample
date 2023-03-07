@@ -1,0 +1,15 @@
+name: condition_check
+on:
+   workflow_dispatch:
+   push:
+      branches: 
+         - main
+jobs: 
+  call-rachana:
+    uses: nischitha24/sample/.github/workflows/rachana.yml@main
+
+  jobB:
+    needs: [call-rachana]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "nishu"
