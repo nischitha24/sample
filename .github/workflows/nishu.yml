@@ -13,3 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "nishu"
+      - name: Use Variable
+        run: |
+          echo "My variable from the first workflow is ${{ needs.call-rachana.outputs.my_var }}"
