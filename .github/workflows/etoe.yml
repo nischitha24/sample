@@ -1,0 +1,17 @@
+name: condition_check
+on:
+   workflow_call:
+   push:
+      branches: 
+         - main
+jobs: 
+  jobB:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "nishu"
+
+  call-rachana:
+    uses: nischitha24/sample/.github/workflows/sanity.yml@main
+    with:
+      ipaddress: 1.2.3.4
+
