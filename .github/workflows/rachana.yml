@@ -1,0 +1,11 @@
+name: condition_check
+on:
+   workflow_dispatch:
+   push:
+      branches: 
+         - main
+jobs:
+  jobA:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "rachana"
