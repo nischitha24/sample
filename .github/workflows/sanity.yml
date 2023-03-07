@@ -1,0 +1,15 @@
+name: condition_check
+on:
+   workflow_call:
+      inputs:
+         ipaddress:
+         required: true
+         type: string
+   
+jobs:
+  jobA:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "rachana"
+      - name: print ip address
+        run: echo ${{ inputs.ipaddress }}
