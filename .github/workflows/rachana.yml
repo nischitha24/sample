@@ -7,3 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "rachana"
+      - name: passing variable
+        id: generate_var
+        run: |
+         echo "::set-output name=var::XYZ"
+         echo "my demo var is ${{ steps.generate_var.output.var }}"
