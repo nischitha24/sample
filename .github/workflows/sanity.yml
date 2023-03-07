@@ -3,8 +3,9 @@ on:
    workflow_call:
       inputs:
          ipaddress:
-         required: true
-         type: string
+           required: true
+           type: string
+
    
 jobs:
   jobA:
