@@ -1,0 +1,12 @@
+name: jumphost_implementation
+on: [push]
+jobs:
+  jumphost:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install Azure CLI 
+      run: curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+    - name: Login to Azure
+      run: az login
+    - name: Set the default subscription
+      run: az account set --subscription 92795555-74c0-409e-bf60-edb488699fb3
