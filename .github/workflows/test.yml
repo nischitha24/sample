@@ -25,14 +25,10 @@ jobs:
         --name numocity-jump-host-ip \
         --query ipAddress \
         --output tsv
-    - name: az config
-      run : |
-        mkdir -p ~/.ssh
-        ssh-keyscan -p 1224 ${{ steps.public_ip.outputs.stdout }} >> ~/.ssh/known_hosts
     - name: checkout first server
       uses: appleboy/ssh-action@v0.1.8
       with:
-        host: ${{ steps.public_ip.outputs.stdout }}
+        host: 20.65.64.224
         username: nischitha.sj
         port: 1224
         script: |
