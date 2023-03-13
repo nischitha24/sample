@@ -24,7 +24,7 @@ jobs:
       run: |
         az network public-ip show \
         --resource-group numocity-jump-host_group \
-        --name numocity-jump-host -ip \
+        --name numocity-jump-host-ip \
         --query ipAddress \
         --output tsv
     - name: checkout first server
