@@ -8,4 +8,3 @@ sudo apt-get update
 sudo apt install pcregrep
 export CONTAINER_NAME=$(cat input-repo/${COMPOSE_LOCATION}docker-compose.yml | pcregrep -o1 'container_name: ([^\s]+)')
 cp input-repo/${COMPOSE_LOCATION}docker-compose.yml ncms/stack/$CONTAINER_NAME.yml
-sudo docker-compose -f "ncms/stack/$CONTAINER_NAME.yml" up -d
