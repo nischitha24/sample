@@ -25,6 +25,8 @@ jobs:
         --name numocity-jump-host-ip \
         --query ipAddress \
         --output tsv
+    - name: az config
+      run : ssh-keyscan -p 1224 ${{ steps.public_ip.outputs.stdout }} >> ~/.ssh/known_hosts
     - name: checkout first server
       uses: appleboy/ssh-action@v0.1.8
       with:
