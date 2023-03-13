@@ -22,7 +22,11 @@ jobs:
     - name: Login to Azure
       run: az login
     - name: Set the default subscription
-      run: az account set --subscription 92795555-74c0-409e-bf60-edb488699fb3
+      run: |
+        az account set --subscription 92795555-74c0-409e-bf60-edb488699fb3
+        az ssh -tt vm --port 1224 --name numocity-jump-host --resource-group numocity-jump-host_group 
+      shell: bash
+        mkdir test
     - name: jumphost login
       run: |
         az config set extension.use_dynamic_install=yes_without_prompt
