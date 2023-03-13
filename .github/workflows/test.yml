@@ -30,11 +30,4 @@ jobs:
         az config set extension.use_dynamic_install=yes_without_prompt
         mkdir -p ~/.ssh
         ssh-keyscan -p 1224 20.65.64.224 >> ~/.ssh/known_hosts
-    - name: checkout first server
-      uses: appleboy/ssh-action@v0.1.8
-      with:
-        host: 20.65.64.224
-        username: nischitha.sj
-        port: 1224
-        script: |
-          mkdir test
+        az ssh -tt vm --port 1224 --name numocity-jump-host --resource-group numocity-jump-host_group "bash make_and_deploy.sh"
