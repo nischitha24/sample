@@ -15,11 +15,23 @@ jobs:
   test_ssh:
     runs-on: ubuntu-latest
     steps: 
+    - name: Login to Azure
+      run: |
+        az login
+        az account set --subscription 92795555-74c0-409e-bf60-edb488699fb3
+    - name: Get public IP address
+      id: public_ip
+      run: |
+        az network public-ip show \
+        --resource-group numocity-jump-host_group \
+        --name numocity-jump-host -ip \
+        --query ipAddress \
+        --output tsv
     - name: checkout first server
       uses: appleboy/ssh-action@v0.1.8
       with:
-        host: numocity-jump-host
-        username: nischitha.sj@numocitytechnologies.onmicrosoft.com
+        host: ${{ steps.public_ip.outputs.stdout }}
+        username: nischitha.sj
         port: 1224
         script: |
           mkdir test
