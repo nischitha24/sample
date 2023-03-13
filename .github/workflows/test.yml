@@ -1,0 +1,25 @@
+name: test-ssh
+on:
+  workflow_dispatch:
+    inputs:
+      tag: 
+        description: "Tag, e.g., SP.0.0.0"
+        required: true
+      OrgRepo:
+        type: choice
+        description: "org/repo, e.g., ncmsdev/ocpp-server"
+        required: true
+        options:
+        - ncmsdev/ocpp-server
+jobs:
+  test_ssh:
+    runs-on: ubuntu-latest
+    steps: 
+    - name: checkout first server
+      uses: appleboy/ssh-action@v0.1.8
+      with:
+        host: numocity-jump-host
+        username: nischitha.sj@numocitytechnologies.onmicrosoft.com
+        port: 1224
+        script: |
+          mkdir test
