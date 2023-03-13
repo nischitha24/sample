@@ -16,8 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
     - name: Login to Azure
-      run: |
-        az login
+      run: az login
     - name: Get public IP address
       id: public_ip
       run: |
