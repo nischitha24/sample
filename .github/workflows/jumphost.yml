@@ -4,6 +4,8 @@ jobs:
   jumphost:
     runs-on: ubuntu-latest
     steps: 
+    - name: 'Checkout Source-repo'
+      uses: actions/checkout@main
     - name: Install Azure CLI 
       run: curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
     - name: Login to Azure
@@ -16,5 +18,4 @@ jobs:
         mkdir -p ~/.ssh
         ssh-keyscan -p 1224 20.65.64.224 >> ~/.ssh/known_hosts
         cat ~/.ssh/known_hosts
-        az ssh vm -t --port 1224 --name numocity-jump-host --resource-group numocity-jump-host_group 
-        az ssh vm --port 1224 --name cms-fusion-test --resource-group numocity-dev-eastus2-rg 
+        bash 
