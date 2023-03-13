@@ -18,7 +18,6 @@ jobs:
     - name: Login to Azure
       run: |
         az login
-        az account set --subscription 92795555-74c0-409e-bf60-edb488699fb3
     - name: Get public IP address
       id: public_ip
       run: |
