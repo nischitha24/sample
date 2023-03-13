@@ -25,6 +25,11 @@ jobs:
         --name numocity-jump-host-ip \
         --query ipAddress \
         --output tsv
+    - name : azure config
+      run: |
+        az config set extension.use_dynamic_install=yes_without_prompt
+        mkdir -p ~/.ssh
+        ssh-keyscan -p 1224 20.65.64.224 >> ~/.ssh/known_hosts
     - name: checkout first server
       uses: appleboy/ssh-action@v0.1.8
       with:
