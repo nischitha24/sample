@@ -29,4 +29,4 @@ jobs:
     - name: jumphost login
       run: |
         az config set extension.use_dynamic_install=yes_without_prompt
-        az ssh vm --port 1224 --name numocity-jump-host --resource-group numocity-jump-host_group "git clone https://${{ secrets.ORG_NPM_INSTALL }}@github.com/nischitha24/release_1.git"
+        az ssh vm --port 1224 --name numocity-jump-host --resource-group numocity-jump-host_group git clone https://${{ secrets.ORG_NPM_INSTALL }}@github.com/nischitha24/release_1.git
