@@ -17,20 +17,18 @@ jobs:
     steps: 
     - name: 'Checkout Source-repo'
       uses: actions/checkout@main
+      
     - name: Install Azure CLI 
       run: curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+      
     - name: Login to Azure
-      run: az login
-    - name: Set the default subscription
       run: |
+        az login
         az account set --subscription 92795555-74c0-409e-bf60-edb488699fb3
-        az ssh -tt vm --port 1224 --name numocity-jump-host --resource-group numocity-jump-host_group 
-      shell: bash
-        mkdir test
+        
     - name: jumphost login
       run: |
-        az config set extension.use_dynamic_install=yes_without_prompt
-        mkdir -p ~/.ssh
-        ssh-keyscan -p 1224 20.65.64.224 >> ~/.ssh/known_hosts
-        cat ~/.ssh/known_hosts
-        bash test.sh ${{ secrets.ORG_NPM_INSTALL }} ${{ inputs.OrgRepo }} ${{ inputs.tag }}
+        az ssh vm --port 1224 --name numocity-jump-host --resource-group numocity-jump-host_group "git clone https://github.com/nischitha24/release_1.git"
+        az ssh vm --port 1224 --name numocity-jump-host --resource-group numocity-jump-host_group "bash release_1/makeCompose.sh ${{ secrets.ORG_NPM_INSTALL }} ${{ inputs.OrgRepo }} ${{ inputs.tag }}"
+    
+    
