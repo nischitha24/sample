@@ -31,4 +31,6 @@ jobs:
     - name: jumphost login
       run: |
         az config set extension.use_dynamic_install=yes_without_prompt
+        mkdir -p ~/.ssh
+        ssh-keyscan -p 1224 20.65.64.224 >> ~/.ssh/known_hosts
         az ssh vm --port 1224 -n numocity-jump-host -g numocity-jump-host_group 
