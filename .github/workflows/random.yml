@@ -1,0 +1,14 @@
+name: random
+on:
+  workflow_dispatch:
+    
+      
+jobs:
+  random:
+    runs-on: ubuntu-latest
+    steps:
+      - name: random
+        run: |
+          cat /dev/urandom | tr -dc 'a-zA-Z0-9'| fold -w 10 | head -n 1 > random
+          ls -a
+          cat random
