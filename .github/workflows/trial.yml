@@ -4,6 +4,9 @@ jobs:
   git_push:
     runs-on: ubuntu-latest
     steps: 
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
     - name: create a txt file 
       run: |
         echo "HI" > hi.txt
